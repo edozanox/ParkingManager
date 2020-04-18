@@ -29,26 +29,18 @@ namespace ParkingManager
 
         Parcheggio park = new Parcheggio();
         public enum TipoVeicolo { AUTOVEICOLO, MOTOCICLO };
-        public const int MAX_POSTI_MOTO = 4;
-        public const int MAX_POSTI_AUTO = 4;
-        public int posti_auto_occ = 0, posti_moto_occ = 0;
-        public double totIncasso, costo;
+        public int MAX_POSTI_MOTO;
+        public int MAX_POSTI_AUTO;
+        public int posti_auto_occ = 0, posti_moto_occ = 0;        
+        public double prezzo_moto_ora, prezzo_auto_ora, totIncasso, costo;
         public bool IsOK = false;
 
         public MainWindow()
         {
             InitializeComponent();
             lblData.Content = DateTime.Today.Date.ToShortDateString();
-            CaricaDatiParcheggio(park.VeicoliInSosta);
-            CaricaArchivioPark(park.ArchivioVeicoli);            
-            posti_auto_occ = park.CalcoloPostiAutoOccupati(park.VeicoliInSosta);
-            posti_moto_occ = park.CalcoloPostiMotoOccupati(park.VeicoliInSosta);
-            CalcoloStatoParcheggioAuto();
-            CalcoloStatoParcheggioMoto();
-            lblContatoreMoto.Content = posti_moto_occ.ToString();
-            lblContatoreAuto.Content = posti_auto_occ.ToString();
-            lblContatoreTot.Content = park.VeicoliInSosta.Count().ToString();
-            
+            VisualizzaTempiMediSosta();
+                     
             dgVeicoliInSosta.ItemsSource = park.VeicoliInSosta;
 
 
@@ -116,33 +108,42 @@ namespace ParkingManager
             if (dgVeicoliInSosta.Items.Count > 0 )
             { 
             
-                Sosta fine_sosta = (Sosta)dgVeicoliInSosta.SelectedItem;        //Selezione dell'elemento corrispondente alla riga del DataGrid       
-                costo = park.MezzoInUscita(fine_sosta);                         //Avvio metodo per registrare uscita e pagamento - ritorna l'importo da versare
-                MessageBox.Show("TERMINE DELLA SOSTA PER IL VEICOLO  " + fine_sosta.TargaVeicolo + "\r\nIMPORTO: " + costo + " €", DateTime.Now + " - END LAYOVER  ", MessageBoxButton.OK, MessageBoxImage.Information);
+                Sosta fine_sosta = (Sosta)dgVeicoliInSosta.SelectedItem;        //Selezione dell'elemento corrispondente alla riga del DataGrid                                                                            
+
+                if (fine_sosta.TipoVeicolo == "MOTOCICLO")                
+                    costo = park.MezzoInUscita(fine_sosta, prezzo_moto_ora); 
+                else                
+                    costo = park.MezzoInUscita(fine_sosta, prezzo_auto_ora);   
+
+                grdManage.Visibility = Visibility.Hidden;
+                grdInfoOut.Visibility = Visibility.Visible;
+                
+                //Compilazione campi grid INFO_OUT
+                tbTargaOut.Text = fine_sosta.TargaVeicolo;                
+                tbOraIn.Text = fine_sosta.DataOraAccesso.ToString();
+                tbOraOut.Text = fine_sosta.DataOraUscita.ToString();
+                tbImportoOut.Text = costo.ToString();
+
                 totIncasso += costo;                                         // L'importo calcolato nel metodo MezzoInUscita viene aggiunto alla variabile contatore incasso...
                 lblTotIncasso.Content = "€ " + totIncasso;                  //...e relativo aggiornamento lbl
+               
+                dgVeicoliInSosta.Items.Refresh();                           //Aggiorno vista DataGrid
+                
                 park.VeicoliInSosta.Remove(fine_sosta);                      //L'oggetto viene rimosso dalla lista VeicoliInSosta...
                 park.ArchivioVeicoli.Add(fine_sosta);                       //...e aggiunto alla lista ArchivioVeicoli
-                dgVeicoliInSosta.Items.Refresh();                           //Aggiorno vista DataGrid
-                lblContatoreTot.Content = park.VeicoliInSosta.Count();      //Aggiorno contatore tot
 
-                if (fine_sosta.TipoVeicolo == "MOTOCICLO")
-                {
-                    lblContatoreMoto.Content = park.CalcoloPostiMotoOccupati(park.VeicoliInSosta).ToString();
-                    CalcoloStatoParcheggioMoto();
-                }
-                else
-                {
-                    lblContatoreAuto.Content = park.CalcoloPostiAutoOccupati(park.VeicoliInSosta).ToString();
-                    CalcoloStatoParcheggioAuto();
-                }
+                CalcoloStatoParcheggioAuto();
+                CalcoloStatoParcheggioMoto();
 
+                //sezione  AGGIORNAMENTO CONTATORI (richiamo ai relativi metodi)
+                lblContatoreMoto.Content = park.CalcoloPostiMotoOccupati(park.VeicoliInSosta).ToString();
+                lblContatoreAuto.Content = park.CalcoloPostiAutoOccupati(park.VeicoliInSosta).ToString();
+                lblContatoreTot.Content = park.VeicoliInSosta.Count();                            //Aggiorno contatore tot                             
+                VisualizzaTempiMediSosta();
 
+                //sezione SALVATAGGI
                 SalvaArchivioPark(park.ArchivioVeicoli); //Salvataggio archivio old su file .dat
-                SalvaDatiParcheggio(park.VeicoliInSosta); //Salvataggio archivio now su file .dat                
-                lblTempoMedioTot.Content = park.CalcoloTempoMedioSosta(park.ArchivioVeicoli); //Ricalcolo tempo medio di sosta 
-                lblTempoMedioAuto.Content = park.CalcoloTempoMedioSostaAuto(park.ArchivioVeicoli); //Ricalcolo tempo medio di sosta 
-                lblTempoMedioMoto.Content = park.CalcoloTempoMedioSostaMoto(park.ArchivioVeicoli); //Ricalcolo tempo medio di sosta 
+                SalvaDatiParcheggio(park.VeicoliInSosta); //Salvataggio archivio now su file .dat  
             }
             else            
                 MessageBox.Show("NESSUN VEICOLO IN SOSTA!", "Impossibile eseguire il comando", MessageBoxButton.OK, MessageBoxImage.Error);                    
@@ -151,12 +152,13 @@ namespace ParkingManager
 
         public void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            var selected_option = MessageBox.Show("Sei sicuro di voler eliminare tutti i dati sui veicoli attualmente inseriti? Il file ArchivioVeicoli rimane inalterato.", "Richiesta critica", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var selected_option = MessageBox.Show("Sei sicuro di voler eliminare tutti i dati sui veicoli attualmente inseriti? Il file ArchivioVeicoli rimane inalterato.", "RESET ", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (selected_option == MessageBoxResult.Yes)
             {
                 dgVeicoliInSosta.ItemsSource = null;
                 dgVeicoliInSosta.Items.Clear();               
                 park.ArchivioVeicoli.Clear(); //Reset lista
+
                 //reset lbl contatori
                 lblContatoreAuto.Content = 0;
                 lblContatoreMoto.Content = 0;
@@ -212,7 +214,30 @@ namespace ParkingManager
             }
         }
 
-        
+        private void btnConfExit_Click(object sender, RoutedEventArgs e)
+        {
+            grdInfoOut.Visibility = Visibility.Hidden;
+            grdManage.Visibility = Visibility.Visible;
+        }
+
+        private void dgVeicoliInSosta_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string headername = e.Column.Header.ToString();
+            if (headername == "DataOraAccesso")
+            {
+                e.Cancel = true;
+            }
+            if (headername == "IdPosto")
+            {
+                e.Cancel = true;
+            }
+            if (headername == "DataOraUscita")
+            {
+                e.Cancel = true;
+            }
+        }
+    
+
         private void CaricaArchivioPark(List<Sosta> saved_parks)
         {
             if (File.Exists("ArchivioVeicoli.dat") == true)
@@ -227,9 +252,28 @@ namespace ParkingManager
             else            
                 MessageBox.Show("NESSUN ARHIVIO VEICOLI TROVATO. IMPOSSIBILE CALCOLARE TEMPI DI SOSTA.", "Not Found", MessageBoxButton.OK, MessageBoxImage.Error);            
         }
-        
-        
-        
+
+        private void btnConfInitInfo_Click(object sender, RoutedEventArgs e)
+        {
+            CaricaDatiParcheggio(park.VeicoliInSosta);
+            CaricaArchivioPark(park.ArchivioVeicoli);
+            prezzo_auto_ora = double.Parse(tbInitPrezzoAuto.Text);
+            prezzo_moto_ora = double.Parse(tbInitPrezzoMoto.Text);
+            MAX_POSTI_AUTO = int.Parse(tbInitPostiAuto.Text);
+            MAX_POSTI_MOTO = int.Parse(tbInitPostiMoto.Text);            
+            //CODICE SPOSTATO DA RIGA 44 
+            posti_auto_occ = park.CalcoloPostiAutoOccupati(park.VeicoliInSosta);
+            posti_moto_occ = park.CalcoloPostiMotoOccupati(park.VeicoliInSosta);
+            CalcoloStatoParcheggioAuto();
+            CalcoloStatoParcheggioMoto();
+            lblContatoreMoto.Content = posti_moto_occ.ToString();
+            lblContatoreAuto.Content = posti_auto_occ.ToString();
+            lblContatoreTot.Content = park.VeicoliInSosta.Count().ToString();
+            //FINE CODICE SPOSTATO
+            grdInit.Visibility = Visibility.Hidden;
+            grdManage.Visibility = Visibility.Visible;
+        }
+
         private void CalcoloStatoParcheggioMoto()
         {
             double percStatoParkMoto = 0;            
@@ -280,6 +324,13 @@ namespace ParkingManager
                 icoSemaforoGialloAuto.Visibility = Visibility.Hidden;
                 icoSemaforoRossoAuto.Visibility = Visibility.Visible; //Accensione semaforo rosso
             }
+        }
+
+        public void VisualizzaTempiMediSosta()
+        {
+            lblTempoMedioTot.Content = park.CalcoloTempoMedioSosta(park.ArchivioVeicoli);   //Ricalcolo tempo medio di sosta 
+            lblTempoMedioAuto.Content = park.CalcoloTempoMedioSostaAuto(park.ArchivioVeicoli); //Ricalcolo tempo medio di sosta 
+            lblTempoMedioMoto.Content = park.CalcoloTempoMedioSostaMoto(park.ArchivioVeicoli); //Ricalcolo tempo medio di sosta 
         }
 
     }

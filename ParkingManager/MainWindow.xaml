@@ -12,82 +12,125 @@
     <Grid>
         <Image Source="Images/park.png" Margin="259,-50,737,558"></Image>
         <Label Content="PARCHEGGIO MONTEFIORE" FontSize="30" FontWeight="Bold" Background="White" Foreground="Red" HorizontalAlignment="Center" Margin="317,31,316,0" VerticalAlignment="Top" Width="416"/>
-        <Label Content="FORM INSERIMENTO VEICOLO" Background="Wheat" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="32,336,0,0" VerticalAlignment="Top" Width="315"/>
-        <TextBox x:Name="tbTarga"  FontSize="18" HorizontalAlignment="Left" Height="32" Margin="32,418,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315"/>
-        <ComboBox x:Name="cbTipoMezzo" FontSize="22" HorizontalAlignment="Left" Margin="32,573,0,0" VerticalAlignment="Top" Width="315" Height="31"/>
-        <TextBox x:Name="tbNomeProp"  FontSize="18" HorizontalAlignment="Left" Height="32" Margin="32,492,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315"/>
-        <Button Name="btnAccessoVeicolo" Content="INSERISCI &#xD;&#xA;VEICOLO" Foreground="Green" Background="Wheat"  FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" Margin="105,636,0,0" VerticalAlignment="Top" Width="125" Height="57" Click="btnAccessoVeicolo_Click">
-            <Button.Effect>
-                <DropShadowEffect Color="#FF12E61B"/>
-            </Button.Effect>
-        </Button>
-        <DataGrid Name="dgVeicoliInSosta" IsReadOnly="True" FontSize="22" HorizontalAlignment="Left" Height="221" Margin="685,400,0,0" VerticalAlignment="Top" Width="342"/>
-        <Label Content="             VEICOLI IN SOSTA&#xD;&#xA;(al riavvio si ricarica in automatico)&#x9;" Background="Wheat" FontSize="20" FontWeight="Bold"  Margin="685,336,24,0" VerticalAlignment="Top"/>
-        <Button Name="btnUscitaVeicolo" Content="VEICOLO &#xD;&#xA;IN USCITA" Foreground="DarkOrange" Background="Wheat" FontWeight="Bold" FontSize="20" HorizontalAlignment="Left" Margin="786,636,0,0" VerticalAlignment="Top" Width="127" Height="57" Click="btnUscitaVeicolo_Click">
-            <Button.Effect>
-                <DropShadowEffect Color="orange"/>
-            </Button.Effect>
-        </Button>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="32,387,0,0" VerticalAlignment="Top"/>
-        <Label Content="TIPOLOGIA VEICOLO" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="32,542,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.934,3.122"/>
-        <Label Content="TARGA ALFANUMERICA" FontWeight="Bold" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="32,387,0,0" VerticalAlignment="Top"/>
-        <Label Content="NOME COGNOME PROPRIETARIO" FontWeight="Bold" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="32,461,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.934,3.122"/>
-        <Label Content="      TOTALE INCASSO &#xD;&#xA;" Background="Wheat" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="395,336,0,0" VerticalAlignment="Top" Width="253" Height="37"/>
         <Image Source="Images/SemaforoVerde.png" Margin="738,31,258,635"/>
         <Label Content="24h" Foreground="Red" FontWeight="Bold" FontSize="18" Margin="739,39,257,631" RenderTransformOrigin="0.453,0.971"></Label>
-        <Label Content="POSTI&#xD;&#xA;OCCUPATI" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="178,107,0,0" VerticalAlignment="Top" Width="106" Background="#FFF0A51A"/>
-        <Label Content="AUTO" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,192,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
-            <Label.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFF01A1A" Offset="1"/>
-                    <GradientStop Color="#FFEB1919" Offset="0.406"/>
-                </LinearGradientBrush>
-            </Label.Background>
-        </Label>
-        <Label Name="lblContatoreAuto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,192,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label Content="MOTO" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,231,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
-            <Label.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFF01A1A" Offset="1"/>
-                    <GradientStop Color="#FFEB1919" Offset="0.406"/>
-                </LinearGradientBrush>
-            </Label.Background>
-        </Label>
-        <Label Name="lblContatoreMoto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,237,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label Content="TEMPO MEDIO&#xA;PERMANENZA &#xD;&#xA;(minuti di sosta)" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="676,88,0,0" VerticalAlignment="Top" Width="179" Background="#FFF0A51A"/>
-        <Label Content="TOT" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,282,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
-            <Label.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFF01A1A" Offset="1"/>
-                    <GradientStop Color="#FFEB1919" Offset="0.406"/>
-                </LinearGradientBrush>
-            </Label.Background>
-        </Label>
-        <Label Name="lblContatoreTot" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,288,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label Name="lblTempoMedioAuto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,192,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label Name="lblTempoMedioMoto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,237,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label x:Name="lblTempoMedioTot" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,282,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
-        <Label x:Name="lblTotIncasso" Content="0 €" FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="435,464,0,0" VerticalAlignment="Top" Width="180" Foreground="GreenYellow" Background="Black" FontWeight="Bold" Height="38"/>
         <Label x:Name="lblData" FontSize="30" FontFamily="Consolas" HorizontalAlignment="Left" Margin="844,35,0,0" VerticalAlignment="Top" Width="174" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="46" Content=".."/>
-        <Button x:Name="btnReset" Content="RESET" FontSize="20" Foreground="Red" Background="Wheat" HorizontalAlignment="Left" FontWeight="Bold" Margin="460,636,0,0" VerticalAlignment="Top" Width="125" Height="57" Click="btnReset_Click">
-            <Button.Effect>
-                <DropShadowEffect Color="red"/>
-            </Button.Effect>
-        </Button>
 
-        <Image Name="icoSemaforoRossoAuto" Source="Images/SemaforoRosso.png" Margin="550,155,449,453" Visibility="Visible" RenderTransformOrigin="0.47,0.667"></Image>
-        <Image Name="icoSemaforoGialloAuto" Source="Images/SemaforoArancione.png" Margin="458,183,501,481" Visibility="Visible"></Image>
-        <Image Name="icoSemaforoVerdeAuto" Source="Images/SemaforoVerde.png" Margin="410,183,582,481" Visibility="Visible" RenderTransformOrigin="0.488,-0.648"></Image>
-        <Image Name="icoSemaforoRossoMoto" Source="Images/SemaforoRosso.png" Margin="552,212,447,396" Visibility="Visible" RenderTransformOrigin="0.47,0.667"></Image>
-        <Image Name="icoSemaforoGialloMoto" Source="Images/SemaforoArancione.png" Margin="460,242,499,422" Visibility="Visible"></Image>
-        <Image Name="icoSemaforoVerdeMoto" Source="Images/SemaforoVerde.png" Margin="410,242,582,422" Visibility="Visible" RenderTransformOrigin="0.488,-0.648"></Image>
-        <Label x:Name="lblOra" FontSize="30" FontFamily="Consolas" Content=".." HorizontalAlignment="Left" Margin="32,31,0,0" VerticalAlignment="Top" Width="174" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="46"/>
-        <Label Content="STATUS AREA DI SOSTA" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="395,133,0,0" VerticalAlignment="Top" Width="232" Background="#FFF0A51A"/>
+        <Grid x:Name="grdInit" Visibility="Visible" Margin="-10,60,10,0">
+            <Label Content="INSERISCI I DATI RICHIESTI PER&#xD;&#xA;AVVIARE IL PARKING MANAGER" Background="Wheat" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="355,95,0,0" VerticalAlignment="Top" Width="335" Height="65"/>
+            <Label Name="lblInitAutoveicoli" Content="AUTOVEICOLI" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="75,240,0,0" VerticalAlignment="Top" Width="335" Background="#FFF0A51A" RenderTransformOrigin="0.821,3.54"/>
+            <TextBox x:Name="tbInitPrezzoAuto"  FontSize="40" HorizontalAlignment="Left" Height="58" Margin="235,293,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="lblE" Content="€/h" FontSize="40" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="340,293,0,0" VerticalAlignment="Top" Foreground="Red" Width="70" RenderTransformOrigin="0.821,3.54"/>
+            <Label x:Name="lblNPA" Content="NUM&#xD;&#xA;POSTI" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="355,361,0,0" VerticalAlignment="Top" Foreground="Red" Width="70" RenderTransformOrigin="0.821,3.54"/>
+            <TextBox x:Name="tbInitPostiAuto"  FontSize="40" HorizontalAlignment="Left" Height="58" Margin="235,361,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+            <Label Content="MOTOVEICOLI" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="620,240,0,0" VerticalAlignment="Top" Width="335" Background="#FFF0A51A" RenderTransformOrigin="0.821,3.54"/>
+            <TextBox x:Name="tbInitPrezzoMoto"  FontSize="40" HorizontalAlignment="Left" Height="58" Margin="735,293,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="lblE_Copy" Content="€/h" FontSize="40" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="885,288,0,0" VerticalAlignment="Top" Foreground="Red" Width="70" RenderTransformOrigin="0.821,3.54"/>
+            <TextBox x:Name="tbInitPostiMoto"  FontSize="40" HorizontalAlignment="Left" Height="58" Margin="735,356,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="lblNPM" Content="NUM&#xA;POSTI" FontSize="20"  FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="885,351,0,0" VerticalAlignment="Top" Foreground="Red" Width="70" RenderTransformOrigin="0.821,3.54"/>
+            <Button x:Name="btnConfInitInfo" Content="AVVIA" FontSize="20" Foreground="Red" Background="Wheat" HorizontalAlignment="Left" FontWeight="Bold" Margin="445,485,0,0" VerticalAlignment="Top" Width="150" Height="65" Click="btnConfInitInfo_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="Green"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
 
+        <Grid x:Name="grdManage" Visibility="Collapsed">
+            <!--TAG SPOSTATI SOPRA - ELEMENTI COMUNI-->
+            <Label Content="FORM INSERIMENTO VEICOLO" Background="Wheat" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="32,336,0,0" VerticalAlignment="Top" Width="315"/>
+            <TextBox x:Name="tbTarga"  FontSize="18" HorizontalAlignment="Left" Height="32" Margin="32,418,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315"/>
+            <ComboBox x:Name="cbTipoMezzo" FontSize="22" HorizontalAlignment="Left" Margin="32,573,0,0" VerticalAlignment="Top" Width="315" Height="31"/>
+            <TextBox x:Name="tbNomeProp"  FontSize="18" HorizontalAlignment="Left" Height="32" Margin="32,492,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="315"/>
+            <Button Name="btnAccessoVeicolo" Content="INSERISCI &#xD;&#xA;VEICOLO" Foreground="Green" Background="Wheat"  FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" Margin="105,636,0,0" VerticalAlignment="Top" Width="125" Height="57" Click="btnAccessoVeicolo_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF12E61B"/>
+                </Button.Effect>
+            </Button>
+            <DataGrid Name="dgVeicoliInSosta" IsReadOnly="True" FontSize="22" AutoGenerateColumns="True" AutoGeneratingColumn="dgVeicoliInSosta_AutoGeneratingColumn" HorizontalAlignment="Left" Height="221" Margin="685,400,0,0" VerticalAlignment="Top" Width="342"/>
+            <Label Content="VEICOLI IN SOSTA&#xD;&#xA;(al riavvio si ricarica in automatico)&#x9;" HorizontalContentAlignment="Center" Background="Wheat" FontSize="20" FontWeight="Bold"  Margin="685,336,24,0" VerticalAlignment="Top"/>
+            <Button Name="btnUscitaVeicolo" Content="VEICOLO &#xD;&#xA;IN USCITA" Foreground="DarkOrange" Background="Wheat" FontWeight="Bold" FontSize="20" HorizontalAlignment="Left" Margin="786,636,0,0" VerticalAlignment="Top" Width="127" Height="57" Click="btnUscitaVeicolo_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="orange"/>
+                </Button.Effect>
+            </Button>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="32,387,0,0" VerticalAlignment="Top"/>
+            <Label Content="TIPOLOGIA VEICOLO" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="32,542,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.934,3.122"/>
+            <Label Content="TARGA ALFANUMERICA" FontWeight="Bold" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="32,387,0,0" VerticalAlignment="Top"/>
+            <Label Content="NOME COGNOME PROPRIETARIO" FontWeight="Bold" FontSize="18" Foreground="White" HorizontalAlignment="Left" Margin="32,461,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.934,3.122"/>
+            <Label Content="      TOTALE INCASSO &#xD;&#xA;" Background="Wheat" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="395,336,0,0" VerticalAlignment="Top" Width="253" Height="37"/>
+            <!--TAG SPOSTATI SOPRA - ELEMENTO COMUNE-->
+            <Label Content="POSTI&#xD;&#xA;OCCUPATI" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="178,107,0,0" VerticalAlignment="Top" Width="106" Background="#FFF0A51A"/>
+            <Label Content="AUTO" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,192,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFF01A1A" Offset="1"/>
+                        <GradientStop Color="#FFEB1919" Offset="0.406"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Name="lblContatoreAuto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,192,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label Content="MOTO" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,231,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFF01A1A" Offset="1"/>
+                        <GradientStop Color="#FFEB1919" Offset="0.406"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Name="lblContatoreMoto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,237,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label Content="TEMPO MEDIO&#xA;PERMANENZA &#xD;&#xA;(minuti di sosta)" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="676,88,0,0" VerticalAlignment="Top" Width="179" Background="#FFF0A51A"/>
+            <Label Content="TOT" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="49,282,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF9DADA" Height="34">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFF01A1A" Offset="1"/>
+                        <GradientStop Color="#FFEB1919" Offset="0.406"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            <Label Name="lblContatoreTot" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="178,288,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label Name="lblTempoMedioAuto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,192,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label Name="lblTempoMedioMoto" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,237,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label x:Name="lblTempoMedioTot" Content=".." FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="685,282,0,0" VerticalAlignment="Top" Width="143" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="34"/>
+            <Label x:Name="lblTotIncasso" Content="0 €" FontSize="25" FontFamily="Consolas" HorizontalAlignment="Left" Margin="435,464,0,0" VerticalAlignment="Top" Width="180" Foreground="GreenYellow" Background="Black" FontWeight="Bold" Height="38"/>
+            <!--TAG SPOSTATI SOPRA - ELEMENTI COMUNI-->
+            <Button x:Name="btnReset" Content="RESET" FontSize="20" Foreground="Red" Background="Wheat" HorizontalAlignment="Left" FontWeight="Bold" Margin="460,636,0,0" VerticalAlignment="Top" Width="125" Height="57" Click="btnReset_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="red"/>
+                </Button.Effect>
+            </Button>
 
+            <Image Name="icoSemaforoRossoAuto" Source="Images/SemaforoRosso.png" Margin="550,155,449,453" Visibility="Visible" RenderTransformOrigin="0.47,0.667"></Image>
+            <Image Name="icoSemaforoGialloAuto" Source="Images/SemaforoArancione.png" Margin="458,183,501,481" Visibility="Visible"></Image>
+            <Image Name="icoSemaforoVerdeAuto" Source="Images/SemaforoVerde.png" Margin="410,183,582,481" Visibility="Visible" RenderTransformOrigin="0.488,-0.648"></Image>
+            <Image Name="icoSemaforoRossoMoto" Source="Images/SemaforoRosso.png" Margin="552,212,447,396" Visibility="Visible" RenderTransformOrigin="0.47,0.667"></Image>
+            <Image Name="icoSemaforoGialloMoto" Source="Images/SemaforoArancione.png" Margin="460,242,499,422" Visibility="Visible"></Image>
+            <Image Name="icoSemaforoVerdeMoto" Source="Images/SemaforoVerde.png" Margin="410,242,582,422" Visibility="Visible" RenderTransformOrigin="0.488,-0.648"></Image>
+            <Label x:Name="lblOra" FontSize="30" FontFamily="Consolas" Content=".." HorizontalAlignment="Left" Margin="32,31,0,0" VerticalAlignment="Top" Width="174" Foreground="#FFF16C10" Background="Black" FontWeight="Bold" Height="46"/>
+            <Label Content="STATUS AREA DI SOSTA" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="395,133,0,0" VerticalAlignment="Top" Width="232" Background="#FFF0A51A"/>
+        </Grid>
+
+        <Grid x:Name="grdInfoOut" Visibility="Collapsed">
+            <Label Content="USCITA VEICOLO" Background="Wheat" FontSize="35" FontWeight="Bold" HorizontalAlignment="Left" Margin="360,105,0,0" VerticalAlignment="Top" Width="295" Height="60"/>
+            <Label x:Name="lblTARGA" Content="TARGA" FontSize="30" FontWeight="Bold" Background="Black" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="255,195,0,0" VerticalAlignment="Top" Foreground="Red" Width="140" RenderTransformOrigin="0.821,3.54" Height="57"/>
+            <TextBlock x:Name="tbTargaOut" Background="White" FontSize="30" HorizontalAlignment="Left" Margin="415,195,0,0" TextWrapping="Wrap" Text="targa" VerticalAlignment="Top" Height="42" Width="295"/>
+            <Label x:Name="lblACCESSO" Content="ACCESSO" FontSize="30" FontWeight="Bold" Background="Black" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="255,352,0,0" VerticalAlignment="Top" Foreground="Red" Width="140" RenderTransformOrigin="0.821,3.54"/>
+            <TextBlock x:Name="tbOraIn"  Background="White" FontSize="30" HorizontalAlignment="Left" Margin="415,352,0,0" TextWrapping="Wrap" Text="tempososta" VerticalAlignment="Top" Height="45" Width="295"/>
+            <Label Content="€" FontSize="30" FontWeight="Bold" Background="Black" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="255,517,0,0" VerticalAlignment="Top" Foreground="Red" Width="140" RenderTransformOrigin="0.821,3.54"/>
+            <TextBlock x:Name="tbImportoOut"  Background="Orange" FontWeight="Bold" FontSize="30" HorizontalAlignment="Left" Margin="415,517,0,0" TextWrapping="Wrap" Text="importofinale" VerticalAlignment="Top" Height="50" Width="295"/>
+            <Button Name="btnConfExit" Content="OK" Foreground="Red" Background="Wheat" FontWeight="Bold" FontSize="20" HorizontalAlignment="Left" Margin="470,632,0,0" VerticalAlignment="Top" Width="127" Height="57" Click="btnConfExit_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="Red"/>
+                </Button.Effect>
+            </Button>
+            <Label x:Name="lblUSCITA" Content="USCITA" FontSize="30" FontWeight="Bold" Background="Black" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="255,432,0,0" VerticalAlignment="Top" Foreground="Red" Width="140" RenderTransformOrigin="0.821,3.54"/>
+            <TextBlock x:Name="tbOraOut"  Background="White" FontSize="30" HorizontalAlignment="Left" Margin="415,432,0,0" TextWrapping="Wrap" Text="tempososta" VerticalAlignment="Top" Height="45" Width="295"/>
+            <Label x:Name="lblID" Content="ID" FontSize="30" FontWeight="Bold" Background="Black" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="255,275,0,0" VerticalAlignment="Top" Foreground="Red" Width="140" RenderTransformOrigin="0.821,3.54" Height="60"/>
+            <TextBlock x:Name="tbId" Background="White" FontSize="30" HorizontalAlignment="Left" Margin="415,275,0,0" TextWrapping="Wrap" Text="DATO NON DISPONIB" VerticalAlignment="Top" Height="42" Width="295"/>
+
+        </Grid>
     </Grid>
 
 </Window>

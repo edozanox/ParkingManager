@@ -11,9 +11,6 @@ namespace ParkingManager
 
         public List<Sosta> VeicoliInSosta = new List<Sosta>();
         public List<Sosta> ArchivioVeicoli = new List<Sosta>();
-        public double prezzo_unitario_auto = 0.40;
-        public double prezzo_unitario_moto = 0.10;
-        
                
         public void MezzoInArrivo(Veicolo ve)
         {
@@ -22,22 +19,17 @@ namespace ParkingManager
 
         } 
         
-        public double MezzoInUscita (Sosta s)
+        public double MezzoInUscita (Sosta s, double prezzo_ora)
         {
-            double prezzo = 0;            
-            s.DataOraUscita = DateTime.Now;
-            TimeSpan tm = s.DataOraUscita.Value - s.DataOraAccesso;
-            double tempo_sosta = tm.TotalSeconds;
-            if (s.TipoVeicolo == "AUTOVEICOLO")
-            {
-                prezzo = tempo_sosta * prezzo_unitario_auto;
+            double prezzo = 0;
+            double tempo_sosta = 0;
 
-            } else if (s.TipoVeicolo =="MOTOCICLO")
-            {
-                prezzo = tempo_sosta * prezzo_unitario_moto;
-            }
+                s.DataOraUscita = DateTime.Now;
+                TimeSpan tm = s.DataOraUscita.Value - s.DataOraAccesso;
+                tempo_sosta = tm.TotalSeconds;            
+                prezzo = tempo_sosta * prezzo_ora;
+                prezzo = Math.Round(prezzo, 2);
 
-            prezzo = Math.Round(prezzo, 2);
             return prezzo;
 
         }
